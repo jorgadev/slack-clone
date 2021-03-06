@@ -7,7 +7,16 @@ import { useStateValue } from "../contexts/StateProvider";
 import { actionTypes } from "../contexts/reducer";
 
 function Login() {
-  const [state, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      dispatch({
+        type: actionTypes.SET_USER,
+        user: user,
+      });
+    }
+  });
 
   const signIn = () => {
     auth
@@ -22,14 +31,16 @@ function Login() {
   };
 
   return (
-    <div className="login">
-      <div className="login__container">
-        <img src={slackLogo} alt="" />
-        <h1>Sign in to Jorga's SLACK</h1>
-        <p>radovanjorgic.com</p>
-        <Button onClick={signIn}>Sign In with Google</Button>
+    !user && (
+      <div className="login">
+        <div className="login__container">
+          <img src={slackLogo} alt="" />
+          <h1>Sign in to Jorga's SLACK</h1>
+          <p>radovanjorgic.com</p>
+          <Button onClick={signIn}>Sign In with Google</Button>
+        </div>
       </div>
-    </div>
+    )
   );
 }
 

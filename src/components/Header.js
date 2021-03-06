@@ -4,11 +4,30 @@ import "./Header.css";
 import { Avatar } from "@material-ui/core";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import SearchIcon from "@material-ui/icons/Search";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useStateValue } from "../contexts/StateProvider";
+import { auth } from "../contexts/firebase";
+import { useHistory } from "react-router-dom";
+import { actionTypes } from "../contexts/reducer";
 
 function Header() {
-  const [{ user }] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
+  const history = useHistory();
+
+  const handleLogout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: null,
+        });
+        history.push("/");
+      })
+      .catch(() => {
+        alert("Failed to log out");
+      });
+  };
 
   return (
     <div className="header">
@@ -25,7 +44,7 @@ function Header() {
         <input placeholder="Search channels.." />
       </div>
       <div className="header__right">
-        <HelpOutlineIcon />
+        <ExitToAppIcon onClick={handleLogout} />
       </div>
     </div>
   );
