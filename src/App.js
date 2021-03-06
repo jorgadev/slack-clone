@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "./contexts/StateProvider";
 
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import Chat from "./Chat";
-import Login from "./Login";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Chat from "./components/Chat";
+import Login from "./components/Login";
 
 function App() {
   // Get an user from State Provider (initialState)

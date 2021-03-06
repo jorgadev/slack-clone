@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Chat.css";
 import { useParams } from "react-router-dom";
-import db from "./firebase";
+import db from "../contexts/firebase";
 import Message from "./Message";
 import ChatInput from "./ChatInput";
 
@@ -12,8 +12,6 @@ function Chat() {
   const { roomId } = useParams();
   const [roomDetails, setRoomDetails] = useState(null);
   const [roomMessages, setRoomMessages] = useState([]);
-
-  console.log(roomDetails);
 
   useEffect(() => {
     if (roomId) {

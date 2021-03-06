@@ -8,8 +8,6 @@ export const actionTypes = {
 };
 
 const reducer = (state, action) => {
-  console.log(action);
-
   // When we set the user it will return current state with updated user
   switch (action.type) {
     case actionTypes.SET_USER:

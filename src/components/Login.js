@@ -1,10 +1,10 @@
 import React from "react";
 import "./Login.css";
 import { Button } from "@material-ui/core";
-import { auth, provider } from "./firebase";
-import slackLogo from "./assets/slack-logo.png";
-import { useStateValue } from "./StateProvider";
-import { actionTypes } from "./reducer";
+import { auth, provider } from "../contexts/firebase";
+import slackLogo from "../assets/slack-logo.png";
+import { useStateValue } from "../contexts/StateProvider";
+import { actionTypes } from "../contexts/reducer";
 
 function Login() {
   const [state, dispatch] = useStateValue();
@@ -13,7 +13,6 @@ function Login() {
     auth
       .signInWithPopup(provider)
       .then((res) => {
-        console.log(res.user);
         dispatch({
           type: actionTypes.SET_USER,
           user: res.user,

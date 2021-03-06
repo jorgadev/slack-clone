@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
 import SidebarOption from "./SidebarOption";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../contexts/StateProvider";
+import db from "../contexts/firebase";
 
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import CreateIcon from "@material-ui/icons/Create";
@@ -15,7 +16,6 @@ import FileCopyIcon from "@material-ui/icons/FileCopy";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
-import db from "./firebase";
 
 function Sidebar() {
   const [channels, setChannels] = useState([]);
