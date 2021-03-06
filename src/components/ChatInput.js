@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./ChatInput.css";
 import db from "../contexts/firebase";
 import { useStateValue } from "../contexts/StateProvider";
 import firebase from "firebase/app";
+import SendIcon from "@material-ui/icons/Send";
 
 function ChatInput({ channelName, channelId }) {
   const [input, setInput] = useState("");
@@ -11,13 +12,20 @@ function ChatInput({ channelName, channelId }) {
   const sendMessage = (e) => {
     e.preventDefault();
 
-    if (channelId) {
-      db.collection("rooms").doc(channelId).collection("messages").add({
-        message: input,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        user: user.displayName,
-        userImage: user.photoURL,
-      });
+    if (channelId && input !== "") {
+      db.collection("rooms")
+        .doc(channelId)
+        .collection("messages")
+        .add({
+          message: input,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          user: user.displayName,
+          userId: user.uid,
+          userImage: user.photoURL,
+        })
+        .then(() => {
+          setInput("");
+        });
     }
   };
 
@@ -30,7 +38,7 @@ function ChatInput({ channelName, channelId }) {
           placeholder={`Message #${channelName?.toLowerCase()}`}
         />
         <button type="submit" onClick={sendMessage}>
-          SEND
+          <SendIcon />
         </button>
       </form>
     </div>

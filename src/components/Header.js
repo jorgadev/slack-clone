@@ -37,7 +37,6 @@ function Header() {
           alt={user?.displayName}
           src={user?.photoURL}
         />
-        <AccessTimeIcon />
       </div>
       <div className="header__search">
         <SearchIcon />

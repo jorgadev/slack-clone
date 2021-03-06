@@ -1,5 +1,10 @@
 body {
-  --slack-color: #3f0f40;
+  --violet: #4a154b;
+  --lightViolet: #532955;
+  --yellow: #ecb22e;
+  --blue: #36c5f0;
+  --green: #2eb67d;
+  --pink: #e01e5a;
   overflow: hidden;
 }
 

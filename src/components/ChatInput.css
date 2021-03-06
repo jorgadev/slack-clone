@@ -1,22 +1,34 @@
 .chatInput {
-  border-radius: 20px;
+  display: flex;
 }
 
 .chatInput > form {
-  position: relative;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 50px;
 }
 
 .chatInput > form > input {
-  position: fixed;
-  bottom: 30px;
-  width: 70%;
-  border: 1px solid gray;
-  border-radius: 3px;
-  padding: 20px;
+  padding: 0 20px;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.chatInput > form > input:focus,
+.chatInput > form > button:focus {
+  outline: none;
 }
 
 .chatInput > form > button {
-  display: none !important;
+  background: transparent;
+  border: none;
+}
+
+.chatInput > form > button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.chatInput > form > button > .MuiSvgIcon-root {
+  color: var(--violet);
 }

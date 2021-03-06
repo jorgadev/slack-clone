@@ -1,6 +1,12 @@
 .message {
   display: flex;
   align-items: center;
+  word-break: break-all;
+  padding: 5px 0;
+}
+
+.message__right {
+  background-color: #f4f4f4;
 }
 
 .message > img {
@@ -11,10 +17,16 @@
 
 .message__info {
   padding-left: 10px;
+  width: 100%;
+}
+
+.message__info > p {
+  margin-top: 10px;
 }
 
 .message__timestamp {
   color: gray;
   font-weight: 300;
   font-size: 13px;
+  padding: 0 10px;
 }

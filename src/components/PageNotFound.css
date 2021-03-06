@@ -1,0 +1,21 @@
+.pageNotFound {
+  display: grid;
+  place-items: center;
+  flex: 0.7;
+  flex-grow: 1;
+}
+
+.pageNotFound > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pageNotFound > div > img {
+  width: 60%;
+  max-width: 500px;
+}
+
+.pageNotFound > div > p {
+  margin-top: 20px;
+}

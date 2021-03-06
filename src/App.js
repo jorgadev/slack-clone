@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   // Get an user from State Provider (initialState)
@@ -23,6 +24,9 @@ function App() {
             <div className="app__body">
               <Sidebar />
               <Switch>
+                <Route path="/room/notyet">
+                  <PageNotFound />
+                </Route>
                 <Route path="/room/:roomId">
                   <Chat />
                 </Route>

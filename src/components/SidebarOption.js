@@ -11,7 +11,7 @@ function SidebarOption({ Icon, title, id, addChannelOption, expand }) {
     if (id) {
       history.push(`/room/${id}`);
     } else {
-      history.push(title);
+      history.push("notyet");
     }
   };
 
