@@ -5,6 +5,7 @@ import { auth, provider } from "../contexts/firebase";
 import slackLogo from "../assets/slack-logo.png";
 import { useStateValue } from "../contexts/StateProvider";
 import { actionTypes } from "../contexts/reducer";
+import GoogleButton from "react-google-button";
 
 function Login() {
   const [{ user }, dispatch] = useStateValue();
@@ -35,9 +36,11 @@ function Login() {
       <div className="login">
         <div className="login__container">
           <img src={slackLogo} alt="" />
-          <h1>Sign in to Jorga's SLACK</h1>
-          <p>radovanjorgic.com</p>
-          <Button onClick={signIn}>Sign In with Google</Button>
+          <h1>Slack: Where work happens</h1>
+          <p>
+            Clone built by <a href="#">jorgadev</a>.
+          </p>
+          <GoogleButton onClick={signIn} />
         </div>
       </div>
     )

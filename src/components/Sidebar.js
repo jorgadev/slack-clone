@@ -20,6 +20,7 @@ import AddIcon from "@material-ui/icons/Add";
 function Sidebar() {
   const [channels, setChannels] = useState([]);
   const [{ user }] = useStateValue();
+  const [channelsExpand, setChannelsExpand] = useState(false);
 
   useEffect(() => {
     // Run when sidebar component loads
@@ -37,7 +38,7 @@ function Sidebar() {
     <div className="sidebar">
       <div className="sidebar__header">
         <div className="sidebar__info">
-          <h2>Yugoslavia</h2>
+          <h2>Slack Clone</h2>
           <h3>
             <FiberManualRecordIcon />
             {user?.displayName}
@@ -52,14 +53,28 @@ function Sidebar() {
       <SidebarOption Icon={PeopleAltIcon} title="People & User Groups" />
       <SidebarOption Icon={AppsIcon} title="Apps" />
       <SidebarOption Icon={FileCopyIcon} title="File Browser" />
-      <SidebarOption Icon={ExpandLessIcon} title="Show Less" />
       <hr />
-      <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
+      <SidebarOption
+        Icon={channelsExpand ? ExpandLessIcon : ExpandMoreIcon}
+        title="Channels"
+        expand={setChannelsExpand}
+        addChannelOption
+      />
       <hr />
+      <div
+        className="sidebar__channels"
+        style={{ display: channelsExpand ? "block" : "none" }}
+      >
+        {channels.map((channel) => (
+          <SidebarOption
+            key={channel.id}
+            title={channel.name}
+            id={channel.id}
+          />
+        ))}
+      </div>
+      <hr style={{ display: channelsExpand ? "block" : "none" }} />
       <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
-      {channels.map((channel) => (
-        <SidebarOption key={channel.id} title={channel.name} id={channel.id} />
-      ))}
     </div>
   );
 }
