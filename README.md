@@ -1,4 +1,4 @@
-# Numberzen
+# Slack Clone
 
 > Slack clone with chat functionality built in React
 
