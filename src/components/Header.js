@@ -38,10 +38,6 @@ function Header() {
           src={user?.photoURL}
         />
       </div>
-      <div className="header__search">
-        <SearchIcon />
-        <input placeholder="Search channels.." />
-      </div>
       <div className="header__right">
         <ExitToAppIcon onClick={handleLogout} />
       </div>

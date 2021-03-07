@@ -1,13 +1,18 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { useStateValue } from "./contexts/StateProvider";
 
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
-import PageNotFound from "./components/PageNotFound";
+import Error from "./components/Error";
 
 function App() {
   // Get an user from State Provider (initialState)
@@ -24,14 +29,14 @@ function App() {
             <div className="app__body">
               <Sidebar />
               <Switch>
-                <Route path="/room/notyet">
-                  <PageNotFound />
+                <Route exact path="/">
+                  <Redirect to="/error" />
                 </Route>
-                <Route path="/room/:roomId">
+                <Route path="/error">
+                  <Error />
+                </Route>
+                <Route exact path="/room/:roomId">
                   <Chat />
-                </Route>
-                <Route path="/">
-                  <h1>Welcome</h1>
                 </Route>
               </Switch>
             </div>

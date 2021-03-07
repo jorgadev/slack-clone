@@ -1,5 +1,6 @@
 .chatInput {
   display: flex;
+  border-top: 1px solid gray;
 }
 
 .chatInput > form {

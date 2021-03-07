@@ -1,14 +1,14 @@
 import React from "react";
 import error from "../assets/404.png";
-import "./PageNotFound.css";
+import "./Error.css";
 
-function PageNotFound() {
+function Error() {
   return (
-    <div className="pageNotFound">
+    <div className="error">
       <div>
         <img src={error} />
         <p>
-          This page was built just for practice purposes. You can add and visit{" "}
+          This page was built just for practice purposes. Try visiting{" "}
           <strong>#channels</strong> instead.
         </p>
       </div>
@@ -16,4 +16,4 @@ function PageNotFound() {
   );
 }
 
-export default PageNotFound;
+export default Error;

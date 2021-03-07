@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Chat.css";
 import { useParams } from "react-router-dom";
 import db from "../contexts/firebase";
@@ -12,6 +12,7 @@ function Chat() {
   const { roomId } = useParams();
   const [roomDetails, setRoomDetails] = useState(null);
   const [roomMessages, setRoomMessages] = useState([]);
+  const scrollDiv = useRef();
 
   useEffect(() => {
     if (roomId) {
@@ -27,6 +28,14 @@ function Chat() {
         setRoomMessages(snapshot.docs.map((doc) => doc.data()));
       });
   }, [roomId]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [roomMessages]);
+
+  const scrollToBottom = () => {
+    scrollDiv.current.scrollIntoView();
+  };
 
   return (
     <div className="chat">
@@ -46,6 +55,7 @@ function Chat() {
             userId={userId}
           />
         ))}
+        <div style={{ float: "left", clear: "both" }} ref={scrollDiv}></div>
       </div>
       <ChatInput channelName={roomDetails?.name} channelId={roomId} />
     </div>
